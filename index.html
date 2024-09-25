@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            const data = google.visualization.arrayToDataTable([
+                ['Category', 'Amount'],
+                ['Food', 0],
+                ['Transport', 0],
+                ['Entertainment', 0],
+                ['Other', 0]
+            ]);
+
+            const options = {
+                title: 'Expenses by Category'
+            };
+
+            const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+
+        function updateChart(expenses) {
+            const data = google.visualization.arrayToDataTable([
+                ['Category', 'Amount'],
+                ['Food', expenses.filter(e => e.category === 'Food').reduce((sum, e) => sum + e.amount, 0)],
+                ['Transport', expenses.filter(e => e.category === 'Transport').reduce((sum, e) => sum + e.amount, 0)],
+                ['Entertainment', expenses.filter(e => e.category === 'Entertainment').reduce((sum, e) => sum + e.amount, 0)],
+                ['Other', expenses.filter(e => e.category === 'Other').reduce((sum, e) => sum + e.amount, 0)]
+            ]);
+
+            const options = {
+                title: 'Expenses by Category'
+            };
+
+            const chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <form id="user-form">
+        <input type="text" id="username" placeholder="Enter your name">
+        <input type="number" id="balance-amount" placeholder="Enter your balance">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="user-info">
+        <p>Username: <span id="display-username"></span></p>
+        <p>Balance: ₹<span id="display-balance-amount"></span></p>
+    </div>
+    <form id="expense-form">
+        <input type="text" id="expense-name" placeholder="Expense name">
+        <input type="number" id="expense-amount" placeholder="Expense amount">
+        <input type="text" id="expense-category" placeholder="Expense category">
+        <input type="date" id="expense-date">
+        <button type="submit">Add Expense</button>
+    </form>
+    <ul id="expense-list"></ul>
+    <button id="calculate-total">Calculate Total</button>
+    <button id="display-balance">Display Balance</button>
+    <button id="delete-expenses">Delete All Expenses</button>
+    <p>Total: ₹<span id="total-amount">0</span></p>
+    <p>Remaining Balance: ₹<span id="balance-amount-display">0</span></p>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <script src="main.js"></script>
+</body>
+</html>
