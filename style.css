@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #4a90e2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input, select, button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+    border-color: #4a90e2;
+}
+
+button {
+    background-color: #4a90e2;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357ab8;
+}
+
+#expense-summary ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#expense-summary li {
+    background-color: #e3f2fd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#expense-summary li button {
+    background-color: #e57373;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#expense-summary li button:hover {
+    background-color: #d32f2f;
+}
+
+#chart-container {
+    margin-top: 20px;
+}
+
+#warning-message {
+    text-align: center;
+    font-weight: bold;
+}
